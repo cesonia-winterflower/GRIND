@@ -4,14 +4,15 @@ import HScroll from '../common/HScroll';
 import Stars from '../common/Stars';
 import { ArrowRight } from '../common/Icons';
 import { formatKRW } from '../../lib/session';
+import { img, CATEGORY_IMG, PROMO_IMG, BRAND_IMG, STYLE_POOL, LOOKBOOK_POOL } from '../../lib/images';
 
 /* ---------- Z4. 카테고리 퀵메뉴 ---------- */
 const CATS = [
-  { key: 'TOP', label: '상의', seed: 'cat-top' },
-  { key: 'BOTTOM', label: '하의', seed: 'cat-bottom' },
-  { key: 'OUTER', label: '아우터', seed: 'cat-outer' },
-  { key: 'SET', label: '세트', seed: 'cat-set' },
-  { key: 'ACCESSORY', label: '용품', seed: 'cat-acc' },
+  { key: 'TOP', label: '상의' },
+  { key: 'BOTTOM', label: '하의' },
+  { key: 'OUTER', label: '아우터' },
+  { key: 'SET', label: '세트' },
+  { key: 'ACCESSORY', label: '용품' },
 ];
 export function CategoryQuick() {
   return (
@@ -20,7 +21,7 @@ export function CategoryQuick() {
         {CATS.map((c) => (
           <Link key={c.key} to={`/category/${c.key}`} className="cat-card"
             style={{ position: 'relative', width: 245, height: 245, borderRadius: 16, overflow: 'hidden', flex: '0 0 auto' }}>
-            <img src={`https://picsum.photos/seed/grind-${c.seed}/300/300?grayscale`} alt={c.label}
+            <img src={img(CATEGORY_IMG[c.key], 300, 300)} alt={c.label}
               style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s' }} className="cat-card__img" />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent, rgba(23,24,26,0.55))' }} />
             <span style={{ position: 'absolute', left: 16, bottom: 16, color: '#fff', fontSize: 16, fontWeight: 700 }}>{c.label}</span>
@@ -44,7 +45,7 @@ export function PromoFeature() {
             기획전 보기 <ArrowRight width={18} height={18} />
           </Link>
         </div>
-        <img src="https://picsum.photos/seed/grind-promo/720/360?grayscale" alt=""
+        <img src={img(PROMO_IMG, 720, 360)} alt=""
           style={{ position: 'absolute', right: 0, top: 0, height: '100%', width: 720, objectFit: 'cover', opacity: 0.5, maskImage: 'linear-gradient(90deg, transparent, #000 40%)' }} />
       </div>
     </section>
@@ -66,7 +67,7 @@ export function BrandStory() {
         </div>
       </Marquee>
       <div className="container" style={{ marginTop: 40, textAlign: 'center' }}>
-        <img src="https://picsum.photos/seed/grind-brand/880/440?grayscale" alt="브랜드 무드"
+        <img src={img(BRAND_IMG, 880, 440)} alt="브랜드 무드"
           style={{ width: 880, height: 440, objectFit: 'cover', borderRadius: 12, margin: '0 auto' }} />
         <h2 style={{ fontSize: 32, fontWeight: 700, marginTop: 32 }}>나를 위한 루틴</h2>
         <p style={{ fontSize: 18, color: 'var(--text-secondary)', marginTop: 12 }}>오늘의 운동이 내일의 나를 만든다.</p>
@@ -89,7 +90,7 @@ export function GrindStyle({ looks }) {
           <HScroll step={640}>
             {looks.map((look, i) => (
               <div key={i} style={{ flex: '0 0 auto', width: 616, height: 420, display: 'flex', gap: 24, scrollSnapAlign: 'start' }}>
-                <img src={`https://picsum.photos/seed/grind-style${i}/320/420?grayscale`} alt="스타일"
+                <img src={img(STYLE_POOL[i % STYLE_POOL.length], 320, 420)} alt="스타일"
                   style={{ width: 315, height: 420, objectFit: 'cover', borderRadius: 12 }} />
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 16 }}>
                   <div className="badge badge--soft">SHOP THE LOOK</div>
@@ -127,7 +128,7 @@ export function Lookbook() {
           <div style={{ display: 'flex', gap: 24 }}>
             {cards.map((i) => (
               <div key={i} className="lookbook-card" style={{ position: 'relative', width: 424, height: 566, borderRadius: 12, overflow: 'hidden', flex: '0 0 auto' }}>
-                <img src={`https://picsum.photos/seed/grind-look${i}/424/566?grayscale`} alt="코디" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src={img(LOOKBOOK_POOL[i % LOOKBOOK_POOL.length], 424, 566)} alt="코디" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div className="lookbook-card__hover">이 코디 상품 4개 <ArrowRight width={18} height={18} /></div>
               </div>
             ))}

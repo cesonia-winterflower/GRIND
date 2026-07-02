@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChatIcon, CloseIcon, ArrowRight } from '../common/Icons';
 import { fetchFaqs } from '../../lib/api';
+import { img, POPUP_IMG } from '../../lib/images';
 
 const CAT_LABEL = { SHIPPING: '배송', RETURN: '교환/반품', SIZE: '사이즈' };
 
@@ -64,7 +65,7 @@ export default function Floating() {
           display: 'grid', placeItems: 'center' }}>
           <div onClick={(e) => e.stopPropagation()} style={{ width: 400, height: 480, background: '#fff', borderRadius: 16,
             overflow: 'hidden', position: 'relative', boxShadow: 'var(--shadow-float)' }}>
-            <img src="https://picsum.photos/seed/grind-popup/400/300?grayscale" alt="" style={{ width: '100%', height: 260, objectFit: 'cover' }} />
+            <img src={img(POPUP_IMG, 400, 300)} alt="" style={{ width: '100%', height: 260, objectFit: 'cover' }} />
             <button onClick={closePopup} aria-label="닫기" style={{ position: 'absolute', top: 12, right: 12, color: '#fff' }}><CloseIcon /></button>
             <div style={{ padding: 24 }}>
               <div className="badge badge--new" style={{ marginBottom: 10 }}>WELCOME</div>

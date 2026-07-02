@@ -22,7 +22,14 @@ export default function MyPage() {
   useEffect(() => {
     if (!user) return;
     fetchOrders(user).then(setOrders);
-    fetchWishlist(user).then((w) => enrichWithVariants(w.map((x) => ({ ...x.products, _wid: x.id }))).then(setWish));
+    fetchWishlist(user).then((w) => {
+      const prods = w.filter((x) => x.products).map((x) => {
+        const imgs = x.products.product_images || [];
+        const main = imgs.find((i) => i.is_main) || imgs[0];
+        return { ...x.products, mainImage: main?.image_url, hoverImage: imgs[1]?.image_url || main?.image_url, _wid: x.id };
+      });
+      enrichWithVariants(prods).then(setWish);
+    });
     fetchUserCoupons(user).then(setCoupons);
   }, [user]);
 

@@ -1,12 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from '../common/Icons';
+import { HERO, img } from '../../lib/images';
 
-const SLIDES = [
-  { img: 'https://picsum.photos/seed/grind-hero1/1920/640?grayscale', head: 'RISE & GRIND', sub: '매일, 조금씩.' },
-  { img: 'https://picsum.photos/seed/grind-hero2/1920/640?grayscale', head: 'DAILY ATHLEISURE', sub: '헬스장에서 거리까지.' },
-  { img: 'https://picsum.photos/seed/grind-hero3/1920/640?grayscale', head: 'FIT FOR YOU', sub: '사이즈 걱정 없이.' },
-];
+const SLIDES = HERO.map((s) => ({ ...s, img: img(s.id, 1920, 640) }));
 
 export default function Hero() {
   const [i, setI] = useState(0);
