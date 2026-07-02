@@ -1,0 +1,59 @@
+.gh {
+  position: sticky; top: 0; z-index: 500; background: var(--white);
+  border-bottom: 1px solid var(--border); box-shadow: var(--shadow-header);
+}
+.gh__inner { height: 72px; display: flex; align-items: center; gap: 24px; }
+
+.gh__logo {
+  display: inline-flex; align-items: center; font-family: var(--font-en);
+  font-size: 26px; font-weight: 900; letter-spacing: 0.02em; color: var(--charcoal);
+}
+.gh__logo-dumbbell { margin: 0 -1px; color: var(--charcoal); transform: translateY(1px); }
+
+.gh__nav { display: flex; align-items: center; margin: 0 auto; height: 72px; }
+.gh__navitem { height: 72px; display: flex; align-items: center; }
+.gh__link {
+  display: inline-flex; align-items: center; height: 72px; padding: 0 24px; color: var(--charcoal);
+  position: relative;
+}
+.gh__link::after {
+  content: ''; position: absolute; left: 24px; right: 24px; bottom: 22px; height: 2px; background: var(--volt);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease;
+}
+.gh__link:hover::after, .gh__link.is-active::after { transform: scaleX(1); }
+.gh__link.is-sale { color: var(--sale); }
+
+.gh__icons { display: flex; align-items: center; gap: 20px; color: var(--charcoal); }
+.gh__icons a, .gh__icons button { color: var(--charcoal); display: inline-flex; }
+.gh__cart { position: relative; }
+.gh__cartbadge {
+  position: absolute; top: -6px; right: -8px; min-width: 16px; height: 16px; padding: 0 4px;
+  background: var(--volt); color: var(--charcoal); border-radius: 999px;
+  font-size: 10px; font-weight: 800; display: grid; place-items: center;
+}
+
+/* 메가메뉴 */
+.gh__mega {
+  position: absolute; left: 0; right: 0; top: 72px; background: var(--white);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-header); animation: fadeUp 0.18s ease;
+}
+.gh__mega-inner { min-height: 300px; display: flex; gap: 64px; padding: 40px 0; }
+.gh__mega-title { color: var(--text-secondary); width: 120px; }
+.gh__mega-list { display: grid; grid-template-columns: repeat(3, minmax(140px, 1fr)); gap: 16px 40px; }
+.gh__mega-list a { font-size: 15px; color: var(--text-primary); }
+.gh__mega-list a:hover { color: var(--charcoal); text-decoration: underline; text-underline-offset: 4px; }
+
+/* 검색 오버레이 */
+.gh__search-overlay { position: fixed; left: 0; right: 0; top: 0; z-index: 900; }
+.gh__search-inner { position: relative; z-index: 2; background: var(--white); padding: 24px 0; box-shadow: var(--shadow-header); }
+.gh__search-form { display: flex; align-items: center; gap: 12px; height: 52px; border-bottom: 2px solid var(--charcoal); }
+.gh__search-input { flex: 1; height: 52px; border: none; outline: none; font-size: 22px; font-weight: 500; }
+.gh__search-input::placeholder { color: rgba(23,24,26,0.3); font-weight: 400; }
+.gh__search-form button { color: var(--charcoal); }
+.gh__search-dim { position: fixed; inset: 0; background: rgba(23,24,26,0.4); z-index: 1; }
+.gh__sugs { position: relative; z-index: 2; background: var(--white); border-top: 1px solid var(--border); padding: 8px 0 16px; }
+.gh__sugs a { display: flex; align-items: center; gap: 12px; padding: 12px 4px; font-size: 15px; }
+.gh__sugs a:hover { background: var(--placeholder); }
+.gh__sug-cat { font-family: var(--font-en); font-size: 11px; font-weight: 700; color: var(--text-secondary); width: 90px; }
+.gh__sug-price { margin-left: auto; font-weight: 700; }

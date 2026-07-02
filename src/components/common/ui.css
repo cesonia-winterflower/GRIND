@@ -1,0 +1,62 @@
+/* ===== 공통 UI: 버튼 / 뱃지 / 칩 / 인풋 ===== */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  height: 52px; padding: 0 32px; border-radius: var(--r-btn);
+  font-size: 15px; font-weight: 700; letter-spacing: -0.01em;
+  transition: transform 0.12s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  white-space: nowrap; user-select: none;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn--volt { background: var(--volt); color: var(--charcoal); }
+.btn--volt:hover:not(:disabled) { filter: brightness(0.95); }
+.btn--dark { background: var(--charcoal); color: var(--white); }
+.btn--dark:hover:not(:disabled) { background: #000; }
+.btn--outline { background: transparent; color: var(--charcoal); border: 1px solid var(--charcoal); }
+.btn--outline:hover:not(:disabled) { background: var(--charcoal); color: var(--white); }
+.btn--ghost { background: var(--placeholder); color: var(--charcoal); }
+.btn--ghost:hover:not(:disabled) { background: var(--border); }
+.btn--sm { height: 44px; padding: 0 20px; font-size: 14px; }
+.btn--lg { height: 56px; }
+.btn--block { width: 100%; }
+
+/* 뱃지 */
+.badge {
+  display: inline-flex; align-items: center; height: 20px; padding: 0 8px;
+  border-radius: var(--r-chip); font-family: var(--font-en);
+  font-size: 11px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.badge--best { background: var(--charcoal); color: var(--white); }
+.badge--rank { background: var(--volt); color: var(--charcoal); }
+.badge--new { background: var(--volt); color: var(--charcoal); }
+.badge--sale { background: var(--sale); color: var(--white); }
+.badge--soft { background: var(--placeholder); color: var(--text-secondary); }
+
+/* 칩 */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px; height: 34px; padding: 0 14px;
+  border: 1px solid var(--border); border-radius: 999px; font-size: 13px; font-weight: 500;
+  color: var(--text-secondary); background: var(--white); transition: all 0.15s;
+}
+.chip.is-active, .chip:hover { border-color: var(--charcoal); color: var(--charcoal); }
+
+/* 인풋 */
+.field { display: flex; flex-direction: column; gap: 8px; }
+.field > label { font-size: 13px; font-weight: 600; color: var(--text-secondary); }
+.input {
+  height: 52px; padding: 0 16px; border: 1px solid var(--border); border-radius: var(--r-btn);
+  font-size: 15px; color: var(--text-primary); background: var(--white); width: 100%; transition: border-color 0.15s;
+}
+.input:focus { outline: none; border-color: var(--charcoal); }
+.input::placeholder { color: rgba(23,24,26,0.32); }
+textarea.input { height: auto; padding: 14px 16px; resize: vertical; line-height: 1.6; }
+
+/* 수량 스텝퍼 */
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--border); border-radius: var(--r-btn); overflow: hidden; }
+.stepper button { width: 40px; height: 40px; display: grid; place-items: center; color: var(--charcoal); }
+.stepper button:hover { background: var(--placeholder); }
+.stepper .val { width: 56px; height: 40px; display: grid; place-items: center; font-weight: 600; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+
+/* 별점 */
+.stars { display: inline-flex; align-items: center; gap: 2px; color: var(--volt); }
+.stars .muted { color: rgba(23,24,26,0.18); }
